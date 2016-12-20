@@ -1,0 +1,5 @@
+name = Ajax Node Loader
+description = Display Terminology Nodes with Ajax.
+package = Epicodus Examples
+core = 7.x
+files[] = ajaxterminology.module
