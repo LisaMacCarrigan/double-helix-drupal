@@ -69,6 +69,8 @@ function generate_base_pair($input) {
             $output_strand[] = "C";
         } elseif($nucleotide == "T") {
             $output_strand[] = "A";
+        } elseif($nucleotide == "C") {
+            $output_strand[] = "G";
         }
     }
     $output_strand = implode(" ", $output_strand);
