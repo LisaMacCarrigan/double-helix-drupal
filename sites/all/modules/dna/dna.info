@@ -1,0 +1,7 @@
+name = DNA
+description = A custom module that presents a form where the user can enter in one half of a DNA helix. The module will generate the other half and print both sides in the browser.
+package = Custom Modules
+core = 7.x
+files[] = dna.module
+files[] = dna.test
+dependencies[] = simpletest

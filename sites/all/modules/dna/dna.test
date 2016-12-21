@@ -1,0 +1,68 @@
+<?php
+
+class DnaUnitTests extends DrupalUnitTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA unit tests',
+            'description' => 'Test that the user form, generate_base_pair function, and display work properly',
+            'group' => 'Custom Modules',
+        );
+    }
+
+    function testGenerateBasePair() {
+
+    // TEST ONE [ A -> T ]----------------------------------------------------//
+
+        $description = "If the current index of one side has an A value, the other side has a T value";
+        // ARRANGE
+        $input = "A";
+        // ACT
+        $result = generate_base_pair($input);
+        // ASSERT
+        $expected_output = "T";
+        $this->assertEqual($result, $expected_output, $description);
+
+    // TEST TWO [ G -> C ]----------------------------------------------------//
+
+        $description = "If the current index of one side has an G value, the other side has a C value";
+        // ARRANGE
+        $input = "G";
+        // ACT
+        $result = generate_base_pair($input);
+        // ASSERT
+        $expected_output = "C";
+        $this->assertEqual($result, $expected_output, $description);
+
+    // TEST THREE [ T -> A ]--------------------------------------------------//
+        $description = "If the current index of one side has a T value, the other side has an A value";
+        // ARRANGE
+        $input = "T";
+        // ACT
+        $result = generate_base_pair($input);
+        // ASSERT
+        $expected_output = "A";
+        $this->assertEqual($result, $expected_output, $description);
+
+    // TEST FOUR [ C -> G ]---------------------------------------------------//
+        $description = "If the current index of one side has a C value, the other side has an G value";
+        // ARRANGE
+        $input = "C";
+        // ACT
+        $result = generate_base_pair($input);
+        // ASSERT
+        $expected_output = "G";
+        $this->assertEqual($result, $expected_output, $description);
+
+    // TEST FIVE [ AG -> TC ]-------------------------------------------------//
+        $description = "If the current side is AG, the other side is respectively TC";
+        // ARRANGE
+        $input = "AG";
+        // ACT
+        $result = generate_base_pair($input);
+        // ASSERT
+        $expected_output = "TC";
+        $this->assertEqual($result, $expected_output, $description);
+    }
+
+}
