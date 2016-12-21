@@ -63,8 +63,10 @@ function generate_base_pair($input) {
     $output_strand = array();
 
     foreach($input_strand as $nucleotide) {
-        if($nucleotide === "A") {
+        if($nucleotide == "A") {
             $output_strand[] = "T";
+        } elseif($nucleotide == "G") {
+            $output_strand[] = "C";
         }
     }
     $output_strand = implode(" ", $output_strand);

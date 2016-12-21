@@ -25,7 +25,7 @@ class DnaUnitTests extends DrupalUnitTestCase {
 
     // TEST TWO [ G -> C ]----------------------------------------------------//
 
-        $description = "If the current index of one side has an G value, the other side has a C value";
+        $description = "If the current index of one side has a G value, the other side has a C value";
         // ARRANGE
         $input = "G";
         // ACT
