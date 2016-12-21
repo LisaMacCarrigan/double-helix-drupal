@@ -51,7 +51,7 @@ class DnaUnitTests extends DrupalUnitTestCase {
         $this->assertEqual($result, $expected_output, $description);
 
     // TEST FOUR [ C -> G ]---------------------------------------------------//
-        $description = "If the current index of one side has a C value, the other side has an G value";
+        $description = "If the current index of one side has a C value, the other side has a G value";
         // ARRANGE
         $input = "C";
         // ACT
