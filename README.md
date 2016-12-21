@@ -1,9 +1,9 @@
 # **Double Helix Drupal**
 
 #### Epicodus Week 4 Advanced Drupal Independent Project 12.19.2016
-#
+
 #### By [Lisa MacCarrigan](https://github.com/lisamaccarrigan)
-#
+
 ![screenshot of project main page](sites/all/themes/insha/img/web-app.png)
 
 ----
