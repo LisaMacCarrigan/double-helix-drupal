@@ -1,1 +1,80 @@
 <?php
+
+function dna_menu() {
+    $items = array();
+    $items['dna'] = array(
+        'title' => 'DNA Base Pair Module',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('input_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['base_pair_result_page'] = array(
+        'title' => 'Check Out the DNA Base Pair!',
+        'page callback' => 'display_result',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,        
+    );
+    return $items;
+}
+
+function input_form() {
+    $form['input'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Specify single strand of DNA',
+        '#description' => 'Nucleotides are A T C G',
+        '#element_validate' => array('element_validate_nucleotides'),
+        '#required' => TRUE,
+        '#attributes' => array(
+            'placeholder' => t('Enter sequence of nucleotides'),
+        ),
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Reveal base pair!',
+    );
+    return $form;
+}
+
+function input_form_submit($form, &$form_state) {
+    $first_strand = strtoupper($form_state['values']['input']);
+
+    $second_strand = generate_base_pair($first_strand);
+    $result = implode($second_strand);
+
+    $_SESSION['first_strand'] = $first_strand;
+    $_SESSION['result'] = $result;
+    $form_state['redirect'] = 'base_pair_result_page';
+}
+
+function display_result() {
+    $result = $_SESSION['result']; // second strand
+    $first_strand = $_SESSION['first_strand'];
+
+    // display in browser
+    return  '<h3>Strand One: </h3>' . $first_strand .
+            '<h3>Strand Two: </h3>' . $result;
+
+}
+
+// =============================== Calculation ============================== //
+
+function generate_base_pair($input) {
+    $split_first_strand = str_split($input);
+}
+
+
+// ============================= Form Validation ============================ //
+
+function element_validate_nucleotides($element) {
+    $valid = '/^[ATCG]+$/i';
+
+    if (!preg_match($valid, $element['#value'])) {
+        form_error($element, t('Nucleotides are A T C G'));
+    }
+
+}
+
+// echo '<pre>';
+// var_dump($thing_of_interest);
+// echo '</pre>';
+// exit;
