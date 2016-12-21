@@ -84,7 +84,7 @@ function element_validate_nucleotides($element) {
     $valid = '/^[ATCG]+$/i';
 
     if (!preg_match($valid, $element['#value'])) {
-        form_error($element, t('Nucleotides are A T C G'));
+        form_error($element, t('DNA nucleotides include only A, T, C, and G'));
     }
 
 }

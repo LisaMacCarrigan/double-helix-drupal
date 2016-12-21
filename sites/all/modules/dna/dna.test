@@ -1,11 +1,17 @@
 <?php
+/**
+ * @file
+ * Tests for the DNA module.
+ */
+
+ //================================ UNIT TESTS ===============================//
 
 class DnaUnitTests extends DrupalUnitTestCase {
 
     public static function getInfo() {
         return array(
             'name' => 'DNA unit tests',
-            'description' => 'Test that the user form, generate_base_pair function, and display work properly',
+            'description' => 'Test generate_base_pair function',
             'group' => 'Custom Modules',
         );
     }
@@ -63,6 +69,47 @@ class DnaUnitTests extends DrupalUnitTestCase {
         // ASSERT
         $expected_output = "TC";
         $this->assertEqual($result, $expected_output, $description);
+    }
+
+}
+
+//============================= FUNCTIONAL TESTS =============================//
+
+class DnaFunctionalTests extends DrupalWebTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA functional tests',
+            'description' => 'Test DNA module front-end functionality',
+            'group' => 'Custom Modules',
+        );
+    }
+
+    public function setUp() {
+        parent::setUp(array('dna'));
+
+    }
+
+    public function testDnaSuccessPage() {
+
+    // TEST ONE [ Front-end Success ]-----------------------------------------//
+
+        $info['input'] = "AT";
+
+        $this->drupalPost('/dna', $info, t('Reveal base pair!'));
+
+        $this->assertText('TA', 'The user has been directed to a new page, and the complementary side of the input strand should be displayed.');
+    }
+
+    public function testDnaFailureMessage() {
+
+    // TEST TWO [ Front-end Failure ]-----------------------------------------//
+
+        $info['input'] = "NO";
+
+        $this->drupalPost('/dna', $info, t('Reveal base pair!'));
+
+        $this->assertText('DNA nucleotides include only A, T, C, and G', 'The user has not been redirected to a new page, and an error message is displayed.');
     }
 
 }
