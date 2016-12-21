@@ -73,7 +73,7 @@ function generate_base_pair($input) {
             $output_strand[] = "G";
         }
     }
-    $output_strand = implode(" ", $output_strand);
+    $output_strand = implode("", $output_strand);
     return $output_strand;
 }
 
