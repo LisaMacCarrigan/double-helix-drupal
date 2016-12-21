@@ -40,10 +40,9 @@ function input_form_submit($form, &$form_state) {
     $first_strand = strtoupper($form_state['values']['input']);
 
     $second_strand = generate_base_pair($first_strand);
-    $result = implode($second_strand);
 
     $_SESSION['first_strand'] = $first_strand;
-    $_SESSION['result'] = $result;
+    $_SESSION['result'] = $second_strand;
     $form_state['redirect'] = 'base_pair_result_page';
 }
 
@@ -60,7 +59,16 @@ function display_result() {
 // =============================== Calculation ============================== //
 
 function generate_base_pair($input) {
-    $split_first_strand = str_split($input);
+    $input_strand = str_split($input);
+    $output_strand = array();
+
+    foreach($input_strand as $nucleotide) {
+        if($nucleotide === "A") {
+            $output_strand[] = "T";
+        }
+    }
+    $output_strand = implode(" ", $output_strand);
+    return $output_strand;
 }
 
 
