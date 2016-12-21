@@ -13,7 +13,7 @@ function dna_menu() {
         'title' => 'Check Out the DNA Base Pair!',
         'page callback' => 'display_result',
         'access callback' => TRUE,
-        'type' => MENU_CALLBACK,        
+        'type' => MENU_CALLBACK,
     );
     return $items;
 }
@@ -28,6 +28,7 @@ function input_form() {
         '#attributes' => array(
             'placeholder' => t('Enter sequence of nucleotides'),
         ),
+    );
     $form['submit'] = array(
         '#type' => 'submit',
         '#value' => 'Reveal base pair!',
