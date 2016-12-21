@@ -1,10 +1,10 @@
 # **Double Helix Drupal**
 
-##### Epicodus Capstone 12.19.2016
+#### Epicodus Week 4 Advanced Drupal Independent Project 12.19.2016
 #
-##### By [Lisa MacCarrigan](https://github.com/lisamaccarrigan)
+#### By [Lisa MacCarrigan](https://github.com/lisamaccarrigan)
 #
-![screenshot of project main page](img/web-app.png)
+![screenshot of project main page](sites/all/themes/insha/img/web-app.png)
 
 ----
 ### **Description**
@@ -58,6 +58,5 @@ For comments or questions, please email Lisa.MacCarrigan@gmail.com
 
 *This application is licensed under the MIT license*
 
-----
 ----
 **Copyright (c) 2016 [Lisa MacCarrigan](https://github.com/lisamaccarrigan)**
